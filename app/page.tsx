@@ -294,7 +294,6 @@ export default function Portfolio() {
             title="Featured Projects"
             subtitle="Some of my recent work"
           />
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
             <ProjectCard
               title="ZenShop E-Commerce"
@@ -312,30 +311,7 @@ export default function Portfolio() {
               demoUrl="https://example.com"
               repoUrl="https://github.com/arsk2512/task-management-app"
             />
-            <ProjectCard
-              title="AI Content Generator"
-              description="An AI-powered content generation tool using OpenAI's GPT models."
-              tags={["Next.js", "OpenAI API", "Node.js", "MongoDB"]}
-              image="/placeholder.svg?height=400&width=600"
-              demoUrl="https://example.com"
-              repoUrl="https://github.com"
-            />
-            <ProjectCard
-              title="Fitness Tracker"
-              description="A mobile-first fitness tracking application with data visualization."
-              tags={["React Native", "TypeScript", "D3.js", "Firebase"]}
-              image="/placeholder.svg?height=400&width=600"
-              demoUrl="https://example.com"
-              repoUrl="https://github.com"
-            />
-            <ProjectCard
-              title="Weather Dashboard"
-              description="A beautiful weather dashboard with forecasts and historical data."
-              tags={["React", "Weather API", "Chart.js", "Styled Components"]}
-              image="/placeholder.svg?height=400&width=600"
-              demoUrl="https://example.com"
-              repoUrl="https://github.com"
-            />
+
             <ProjectCard
               title="Portfolio Website"
               description="This portfolio website built with Next.js, Tailwind CSS, and Firebase."
@@ -345,6 +321,9 @@ export default function Portfolio() {
               repoUrl="https://github.com"
             />
           </div>
+          <p className="w-full text-center text-zinc-400 my-5">
+            Exicting Projects Coming soon..
+          </p>
         </div>
       </section>
 
@@ -430,10 +409,7 @@ export default function Portfolio() {
                 <h4 className="text-lg font-medium mb-4">Current Status</h4>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
-                  <span>
-                    Available for full-time opportunities (last updated at
-                    16-07-2025)
-                  </span>
+                  <span>Available for full-time opportunities</span>
                 </div>
               </div>
             </GlassmorphicCard>
