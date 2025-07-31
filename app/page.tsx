@@ -71,7 +71,7 @@ export default function Portfolio() {
             <div className="inline-block">
               <div className="relative px-3 py-1 text-sm font-medium rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4 mt-4">
                 <span className="relative z-10">
-                  Software Engineer & Creative Developer
+                  Software Engineer & Creative UI Developer
                 </span>
                 <span className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 animate-pulse"></span>
               </div>
@@ -199,18 +199,18 @@ export default function Portfolio() {
                   I'm a passionate software engineer with experience building
                   web applications and digital products. I specialize in
                   frontend development with React and Next.js, but I'm also
-                  comfortable working with backend technologies.
+                  comfortable exploring new technologies.
                 </p>
                 <p className="text-lg text-zinc-300 mt-4">
                   My journey in tech started with a strong foundation in
-                  software development. I've worked with various companies to
+                  frontend development. I've worked on various projects to
                   create intuitive, performant, and accessible digital
                   experiences.
                 </p>
                 <p className="text-lg text-zinc-300 mt-4">
                   When I'm not coding, you can find me exploring new
-                  technologies, contributing to open-source projects, and
-                  staying up-to-date with the latest industry trends.
+                  technologies, contributing to sprint plannings, and staying
+                  up-to-date with the latest industry trends.
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 mt-8">
@@ -235,9 +235,16 @@ export default function Portfolio() {
                 </div>
 
                 <div className="mt-8">
-                  <Button className="bg-zinc-800 hover:bg-zinc-700 text-white">
-                    Download Resume
-                  </Button>
+                  <a
+                    href="/resume.pdf"
+                    download // 👈 triggers download instead of opening
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="bg-zinc-800 hover:bg-zinc-700 text-white">
+                      Download Resume
+                    </Button>
+                  </a>
                 </div>
               </GlassmorphicCard>
             </div>
@@ -263,6 +270,7 @@ export default function Portfolio() {
             <SkillBadge name="TypeScript" level={85} />
             <SkillBadge name="React" level={95} />
             <SkillBadge name="Next.js" level={90} />
+            <SkillBadge name="jQuery" level={75} />
             <SkillBadge name="Chakra UI" level={90} />
             <SkillBadge name="HTML/CSS" level={95} />
             <SkillBadge name="Tailwind CSS" level={90} />
@@ -270,7 +278,6 @@ export default function Portfolio() {
             <SkillBadge name="NextAuth" level={75} />
             <SkillBadge name="API Integration" level={85} />
             <SkillBadge name="Git" level={85} />
-            <SkillBadge name="Agile" level={65} />
           </div>
         </div>
       </section>
@@ -331,10 +338,10 @@ export default function Portfolio() {
             />
             <ProjectCard
               title="Portfolio Website"
-              description="This portfolio website built with Next.js and Tailwind CSS."
-              tags={["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"]}
-              image="/placeholder.svg?height=400&width=600"
-              demoUrl="https://example.com"
+              description="This portfolio website built with Next.js, Tailwind CSS, and Firebase."
+              tags={["Next.js", "Tailwind CSS", "Framer Motion", "Firebase"]}
+              image="/portfolio.png?height=400&width=600"
+              demoUrl="#"
               repoUrl="https://github.com"
             />
           </div>

@@ -1,30 +1,30 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { useMobile } from "@/hooks/use-mobile"
+import { Button } from "@/components/ui/button";
+import { useMobile } from "@/hooks/use-mobile";
 
 export function FloatingNav() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
-  const isMobile = useMobile()
+  const [isVisible, setIsVisible] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const isMobile = useMobile();
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
-        setIsVisible(true)
+        setIsVisible(true);
       } else {
-        setIsVisible(false)
+        setIsVisible(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { name: "About", href: "#about" },
@@ -32,13 +32,13 @@ export function FloatingNav() {
     { name: "Projects", href: "#projects" },
     { name: "Experience", href: "#experience" },
     { name: "Contact", href: "#contact" },
-  ]
+  ];
 
   const handleNavClick = () => {
     if (isMobile) {
-      setIsOpen(false)
+      setIsOpen(false);
     }
-  }
+  };
 
   return (
     <>
@@ -54,7 +54,9 @@ export function FloatingNav() {
           {isMobile ? (
             <div className="relative flex items-center justify-between">
               <Link href="/" className="font-bold text-lg">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Ab.</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+                  Ab.
+                </span>
                 <span className="text-white">Rehman</span>
               </Link>
               <Button
@@ -63,13 +65,19 @@ export function FloatingNav() {
                 className="text-zinc-400 hover:text-white hover:bg-zinc-700/50"
                 onClick={() => setIsOpen(!isOpen)}
               >
-                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                {isOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
               </Button>
             </div>
           ) : (
             <div className="relative flex items-center gap-1">
               <Link href="/" className="font-bold text-lg mr-4">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Ab.</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+                  Ab.
+                </span>
                 <span className="text-white">Rehman</span>
               </Link>
               {navItems.map((item) => (
@@ -82,12 +90,19 @@ export function FloatingNav() {
                   {item.name}
                 </Link>
               ))}
-              <Button
-                size="sm"
-                className="ml-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0"
+              <a
+                href="/resume.pdf"
+                download // 👈 triggers download instead of opening
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Resume
-              </Button>
+                <Button
+                  size="sm"
+                  className="ml-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0"
+                >
+                  Resume
+                </Button>
+              </a>
             </div>
           )}
         </div>
@@ -119,5 +134,5 @@ export function FloatingNav() {
         </motion.div>
       )}
     </>
-  )
+  );
 }
