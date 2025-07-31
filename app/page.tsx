@@ -318,7 +318,7 @@ export default function Portfolio() {
               tags={["Next.js", "Tailwind CSS", "Framer Motion", "Firebase"]}
               image="/portfolio.png?height=400&width=600"
               demoUrl="#"
-              repoUrl="https://github.com"
+              repoUrl="https://github.com/arsk2512/Portfolio"
             />
           </div>
           <p className="w-full text-center text-zinc-400 my-5">
