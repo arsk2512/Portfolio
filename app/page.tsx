@@ -13,6 +13,44 @@ import { ScrollProgress } from "@/components/scroll-progress";
 import { SectionHeading } from "@/components/section-heading";
 import { GlassmorphicCard } from "@/components/glassmorphic-card";
 
+// Data for Education Timeline
+const education = [
+  {
+    title: "Master of Computer Applications - MCA",
+    organization: "University of Mumbai Distance & Open Learning",
+    period: "Mar 2023 - Dec 2025",
+  },
+  {
+    title: "Bachelor of Commerce - BCom",
+    organization: "University of Mumbai Distance & Open Learning",
+    period: "May 2019 - June 2022",
+  },
+];
+
+const professionalExperiences = [
+  {
+    title: "Software Developer - Frontend",
+    organization: "ILM UX",
+    period: "July 2023 - Present",
+    description:
+      "Lead the frontend development project in building Healthcare products. Implemented new features, improved performance, and mentored junior developers.",
+  },
+  {
+    title: "Frontend Developer Intern",
+    organization: "ILM UX",
+    period: "Apr 2023 - June 2023",
+    description:
+      "Developed understanding of the Software Development Life Cycle (SDLC) and Agile methodologies",
+  },
+  {
+    title: "Sales Executive",
+    organization: "RNA Builders NG",
+    period: "May 2018 - Sep 2022",
+    description:
+      "Built and maintain strong relationships through a customer centric-approach, addressing pain points and offering optimal consultation",
+  },
+];
+
 export default function Portfolio() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-900 to-black text-white overflow-hidden">
@@ -49,19 +87,23 @@ export default function Portfolio() {
               a passion for innovation.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button className="relative overflow-hidden group bg-gradient-to-r from-purple-500 to-pink-500 border-0">
-                <span className="relative z-10 flex items-center">
-                  View Projects{" "}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-              </Button>
-              <Button
-                variant="outline"
-                className="border-zinc-700 text-pink-500 hover:text-pink-700 hover:border-zinc-500"
-              >
-                Contact Me
-              </Button>
+              <Link href="#projects">
+                <Button className="relative overflow-hidden group bg-gradient-to-r from-purple-500 to-pink-500 border-0">
+                  <span className="relative z-10 flex items-center">
+                    View Projects{" "}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Button>
+              </Link>
+
+              <Link href="#contact">
+                <Button className="relative overflow-hidden group bg-gradient-to-r from-purple-500 to-pink-500 border-0">
+                  <span className="relative z-10 flex items-center">
+                    Contact Me{" "}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Button>
+              </Link>
             </div>
             <div className="flex gap-4 pt-4">
               <Link
@@ -79,7 +121,7 @@ export default function Portfolio() {
                 </Button>
               </Link>
               <Link
-                href="https://www.linkedin.com/in/ars2512/"
+                href="https://www.linkedin.com/in/arsk2512/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -134,10 +176,11 @@ export default function Portfolio() {
               <div className="absolute -inset-4 rounded-xl bg-gradient-to-r from-purple-500/20 to-pink-500/20 blur-xl opacity-70"></div>
               <div className="relative aspect-square rounded-xl overflow-hidden border border-zinc-800">
                 <img
-                  src="/placeholder.svg?height=600&width=600"
+                  src="/author_img.jpg?height=full&width=full"
                   alt="Abdul Rehman Khan"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover scale-90 p-2 filter grayscale"
                 />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 w-full p-6">
                   <div className="flex items-center gap-2">
@@ -220,14 +263,14 @@ export default function Portfolio() {
             <SkillBadge name="TypeScript" level={85} />
             <SkillBadge name="React" level={95} />
             <SkillBadge name="Next.js" level={90} />
-            <SkillBadge name="Chakra UI" level={80} />
+            <SkillBadge name="Chakra UI" level={90} />
             <SkillBadge name="HTML/CSS" level={95} />
             <SkillBadge name="Tailwind CSS" level={90} />
-            <SkillBadge name="Shadcn" level={75} />
-            <SkillBadge name="NextAuth" level={70} />
-            <SkillBadge name="AWS" level={65} />
-            <SkillBadge name="Docker" level={60} />
+            <SkillBadge name="Shadcn" level={80} />
+            <SkillBadge name="NextAuth" level={75} />
+            <SkillBadge name="API Integration" level={85} />
             <SkillBadge name="Git" level={85} />
+            <SkillBadge name="Agile" level={65} />
           </div>
         </div>
       </section>
@@ -257,10 +300,10 @@ export default function Portfolio() {
             <ProjectCard
               title="Task Management App"
               description="A collaborative task management application with real-time updates."
-              tags={["React", "Firebase", "Tailwind CSS", "Redux"]}
-              image="/placeholder.svg?height=400&width=600"
+              tags={["React", "React-hook-form", "Tailwind CSS", "Context API"]}
+              image="/task-manager-app.png?height=400&width=600"
               demoUrl="https://example.com"
-              repoUrl="https://github.com"
+              repoUrl="https://github.com/arsk2512/task-management-app"
             />
             <ProjectCard
               title="AI Content Generator"
@@ -312,7 +355,23 @@ export default function Portfolio() {
           />
 
           <div className="mt-16">
-            <Timeline />
+            <Timeline data={professionalExperiences} />
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="experience" className="py-32 relative">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        </div>
+
+        <div className="container relative z-10">
+          <SectionHeading title="Education" subtitle="My Education journey" />
+
+          <div className="mt-16">
+            <Timeline data={education} />
           </div>
         </div>
       </section>
@@ -346,9 +405,7 @@ export default function Portfolio() {
                   </div>
                   <div>
                     <div className="text-sm text-zinc-500">LinkedIn</div>
-                    <div className="font-medium">
-                      linkedin.com/in/arsk2512
-                    </div>
+                    <div className="font-medium">linkedin.com/in/arsk2512</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -367,7 +424,8 @@ export default function Portfolio() {
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
                   <span>
-                    Available for freelance work and full-time opportunities
+                    Available for full-time opportunities (last updated at
+                    16-07-2025)
                   </span>
                 </div>
               </div>

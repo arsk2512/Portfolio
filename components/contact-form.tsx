@@ -1,35 +1,79 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Send } from "lucide-react";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Send } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { useToast } from "@/hooks/use-toast"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { db } from "@/lib/firebase"; // ✅ make sure this path is correct
 
 export function ContactForm() {
-  const { toast } = useToast()
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { toast } = useToast();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      await addDoc(collection(db, "contacts"), {
+        ...formData,
+        timestamp: Timestamp.now(),
+      });
 
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    })
+      // 2️⃣ Send an email via your Resend API route
+      const emailRes = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setIsSubmitting(false)
-    e.currentTarget.reset()
-  }
+      if (!emailRes.ok) {
+        throw new Error("Failed to send email");
+      }
+
+      // 3️⃣ Show success toast
+      toast({
+        title: "Message sent!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
+
+      // 4️⃣ Reset the form
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      toast({
+        title: "Oops!",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    }
+
+    setIsSubmitting(false);
+  };
 
   return (
     <motion.div
@@ -47,31 +91,43 @@ export function ContactForm() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <Input
+                name="name"
                 placeholder="Your Name"
                 required
+                value={formData.name}
+                onChange={handleChange}
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
               />
             </div>
             <div className="space-y-2">
               <Input
+                name="email"
                 type="email"
                 placeholder="Your Email"
                 required
+                value={formData.email}
+                onChange={handleChange}
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
               />
             </div>
             <div className="space-y-2">
               <Input
+                name="subject"
                 placeholder="Subject"
                 required
+                value={formData.subject}
+                onChange={handleChange}
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
               />
             </div>
             <div className="space-y-2">
               <Textarea
+                name="message"
                 placeholder="Your Message"
                 rows={5}
                 required
+                value={formData.message}
+                onChange={handleChange}
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
               />
             </div>
@@ -92,5 +148,5 @@ export function ContactForm() {
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
