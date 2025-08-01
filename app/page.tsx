@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/project-card";
@@ -121,7 +121,7 @@ export default function Portfolio() {
                 </Button>
               </Link>
               <Link
-                href="https://www.linkedin.com/in/arsk2512/"
+                href="https://www.linkedin.com/in/abdul-rehman-khan-arsk2512/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -221,6 +221,10 @@ export default function Portfolio() {
                   <div className="space-y-1">
                     <div className="text-sm text-zinc-500">Email</div>
                     <div className="font-medium">abdrehmankh2@gmail.com</div>
+                  </div>
+                  <div className="space-y-1">
+                    <div className="text-sm text-zinc-500">Phone</div>
+                    <div className="font-medium">+91 8850920502</div>
                   </div>
                   <div className="space-y-1">
                     <div className="text-sm text-zinc-500">Location</div>
@@ -387,11 +391,22 @@ export default function Portfolio() {
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center">
+                    <Phone className="h-5 w-5 text-purple-400" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-zinc-500">Phone</div>
+                    <div className="font-medium">+91 8850920502</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center">
                     <Linkedin className="h-5 w-5 text-purple-400" />
                   </div>
                   <div>
                     <div className="text-sm text-zinc-500">LinkedIn</div>
-                    <div className="font-medium">linkedin.com/in/arsk2512</div>
+                    <div className="font-medium">
+                      www.linkedin.com/in/abdul-rehman-khan-arsk2512
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -450,7 +465,7 @@ export default function Portfolio() {
               </Button>
             </Link>
             <Link
-              href="https://www.linkedin.com/in/arsk2512/"
+              href="https://www.linkedin.com/in/abdul-rehman-khan-arsk2512/"
               target="_blank"
               rel="noopener noreferrer"
             >
